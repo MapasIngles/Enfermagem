@@ -151,7 +151,7 @@
     .offer { background: var(--tint); }
     .offer-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 24px; width: min(100%, 980px); margin: 0 auto; }
     .offer-card { position: relative; width: 100%; margin: 0; padding: clamp(25px, 4vw, 38px); border: 1px solid var(--border); border-radius: 26px; background: var(--paper); box-shadow: 0 18px 48px rgba(18, 56, 74, .09); text-align: center; scroll-margin-top: 28px; }
-    .offer-card.is-featured { border: 2px solid var(--accent); box-shadow: 0 22px 60px rgba(217, 79, 131, .22); transform: translateY(-10px); }
+    .offer-card.is-featured { border: 2px solid var(--accent); box-shadow: 0 22px 60px rgba(217, 79, 131, .22); transform: translateY(-10px) scale(1.035); z-index: 1; }
     .offer-card.is-featured::before { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); padding: 7px 18px; border-radius: 999px; background: var(--accent); color: #fff; content: 'MELHOR CUSTO-BENEFÍCIO'; font-size: .7rem; font-weight: 900; letter-spacing: .07em; white-space: nowrap; }
     .offer-kicker { display: inline-block; margin-bottom: 10px; color: var(--highlight); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
     .offer-card.is-featured .offer-kicker { color: var(--accent); }
@@ -170,9 +170,26 @@
     .offer-card-mockup { width: min(100%, 220px); margin: -8px auto 18px; padding: 6px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg); box-shadow: 0 10px 24px rgba(18, 56, 74, .1); }
     .offer-card-mockup img { width: 100%; border-radius: 11px; }
     .offer-card-mockup figcaption { display: none; }
+    .offer-card.is-featured .offer-card-mockup { width: min(100%, 250px); border-color: rgba(217, 79, 131, .32); }
+    .offer-size-note { display: block; margin: -4px 0 15px; color: var(--accent); font-size: .68rem; font-weight: 900; letter-spacing: .08em; text-transform: uppercase; }
     @media (max-width: 760px) {
-      .offer-options { grid-template-columns: 1fr; gap: 34px; }
-      .offer-card.is-featured { transform: none; }
+      .offer-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .offer-card { padding: 18px 10px; border-radius: 18px; }
+      .offer-card.is-featured { transform: scale(1.015); }
+      .offer-card.is-featured::before { top: -11px; padding: 5px 7px; font-size: .48rem; letter-spacing: .03em; }
+      .offer-kicker { min-height: 25px; margin-bottom: 6px; font-size: .52rem; letter-spacing: .05em; line-height: 1.15; }
+      .offer-card h2 { font-size: clamp(1rem, 4.2vw, 1.35rem); line-height: 1.15; }
+      .offer-subtitle { min-height: 68px; margin-bottom: 10px; font-size: .69rem; line-height: 1.35; }
+      .offer-card .price { gap: 3px; margin: 2px 0 14px; }
+      .offer-card .price .currency { font-size: .95rem; }
+      .offer-card .price .amount { font-size: clamp(2.6rem, 11vw, 3.7rem); }
+      .offer-card .price .cents { margin-top: 7px; font-size: .95rem; }
+      .offer-card .offer-list { gap: 8px; margin-bottom: 16px; }
+      .offer-card .offer-list li { gap: 5px; font-size: .67rem; line-height: 1.25; }
+      .offer-card .offer-list .check { flex-basis: 15px; width: 15px; height: 15px; font-size: 9px; }
+      .offer-card .offer-cta { min-height: 48px; padding: 9px 5px; font-size: .59rem; line-height: 1.15; }
+      .offer-card .offer-note { margin-top: 10px; font-size: .61rem; line-height: 1.25; }
+      .offer-card-mockup { width: 100%; margin: -5px auto 12px; padding: 4px; }
     }
     .offer-list { display: grid; gap: 12px; max-width: 490px; margin: 0 auto 29px; padding: 0; list-style: none; text-align: left; }
     .offer-list li { display: flex; gap: 11px; align-items: flex-start; color: var(--text); font-weight: 600; }
@@ -483,8 +500,12 @@
           </article>
 
           <article class="offer-card offer-option is-featured" id="offer-complete">
+            <figure class="offer-product-image offer-card-mockup">
+              <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519664018870824/hBTKXcEGRDBLLfhx.png" alt="Mockup completo com mapas mentais e bônus desbloqueados" width="1920" height="1920" loading="lazy" decoding="async">
+            </figure>
             <span class="offer-kicker">Oferta completa</span>
             <h2>Mapas + bônus</h2>
+            <small class="offer-size-note">Pacote maior e mais completo</small>
             <p class="offer-subtitle">A opção mais completa para organizar sua rotina e acelerar a revisão.</p>
             <div class="price" aria-label="27 reais e 90 centavos"><span class="currency">R$</span><span class="amount">27</span><span class="cents">90</span></div>
             <ul class="offer-list">
