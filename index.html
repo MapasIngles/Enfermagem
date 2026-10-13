@@ -149,16 +149,33 @@
     .bonus-label { display: inline-block; margin-bottom: 12px; color: var(--highlight); font-size: .78rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
     .bonus-end { max-width: 850px; margin: 32px auto 0; text-align: center; color: var(--muted); }
     .offer { background: var(--tint); }
-    .offer-card { width: min(100%, 750px); margin: 0 auto; padding: clamp(28px, 5vw, 48px); border: 1px solid var(--border); border-radius: 26px; background: var(--paper); box-shadow: 0 22px 60px rgba(18, 56, 74, .12); text-align: center; scroll-margin-top: 28px; }
-    .offer-card.is-targeted { animation: offer-target 1.15s ease both; }
-    @keyframes offer-target { 0% { transform: translateY(12px); box-shadow: 0 22px 60px rgba(18, 56, 74, .12); } 35% { transform: translateY(0); box-shadow: 0 0 0 7px rgba(35, 127, 139, .16), 0 25px 70px rgba(35, 127, 139, .22); } 100% { transform: translateY(0); box-shadow: 0 22px 60px rgba(18, 56, 74, .12); } }
-    .offer-card h2 { margin-bottom: 12px; }
-    .offer-card .lead { margin: 0 auto 25px; color: var(--muted); font-size: 1.08rem; }
+    .offer-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 24px; width: min(100%, 980px); margin: 0 auto; }
+    .offer-card { position: relative; width: 100%; margin: 0; padding: clamp(25px, 4vw, 38px); border: 1px solid var(--border); border-radius: 26px; background: var(--paper); box-shadow: 0 18px 48px rgba(18, 56, 74, .09); text-align: center; scroll-margin-top: 28px; }
+    .offer-card.is-featured { border: 2px solid var(--accent); box-shadow: 0 22px 60px rgba(217, 79, 131, .22); transform: translateY(-10px); }
+    .offer-card.is-featured::before { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); padding: 7px 18px; border-radius: 999px; background: var(--accent); color: #fff; content: 'MELHOR CUSTO-BENEFÍCIO'; font-size: .7rem; font-weight: 900; letter-spacing: .07em; white-space: nowrap; }
+    .offer-kicker { display: inline-block; margin-bottom: 10px; color: var(--highlight); font-size: .72rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }
+    .offer-card.is-featured .offer-kicker { color: var(--accent); }
+    .offer-card h2 { margin-bottom: 9px; font-size: clamp(1.45rem, 3vw, 2rem); }
+    .offer-subtitle { min-height: 50px; margin: 0 auto 18px; color: var(--muted); font-size: .95rem; }
+    .offer-card .price { margin: 4px 0 20px; }
+    .offer-card .price .amount { font-size: clamp(3.7rem, 9vw, 5rem); }
+    .offer-card .price .cents { align-self: flex-start; margin-top: 13px; font-size: 1.5rem; }
+    .offer-card .offer-list { margin-bottom: 25px; }
+    .offer-card .offer-list li { font-size: .93rem; }
+    .offer-card .offer-list li.locked { color: #8b979b; opacity: .78; }
+    .offer-card .offer-list li.locked .check { background: #aeb9bc; }
+    .offer-card .offer-list li.locked .lock-label { text-decoration: line-through; text-decoration-thickness: 1px; }
+    .offer-card .offer-note { display: block; margin-top: 14px; color: var(--muted); font-size: .78rem; }
+    .offer-card .offer-note strong { color: var(--primary); }
+    .offer-card-mockup { width: min(100%, 220px); margin: -8px auto 18px; padding: 6px; border: 1px solid var(--border); border-radius: 16px; background: var(--bg); box-shadow: 0 10px 24px rgba(18, 56, 74, .1); }
+    .offer-card-mockup img { width: 100%; border-radius: 11px; }
+    .offer-card-mockup figcaption { display: none; }
+    @media (max-width: 760px) {
+      .offer-options { grid-template-columns: 1fr; gap: 34px; }
+      .offer-card.is-featured { transform: none; }
+    }
     .offer-list { display: grid; gap: 12px; max-width: 490px; margin: 0 auto 29px; padding: 0; list-style: none; text-align: left; }
     .offer-list li { display: flex; gap: 11px; align-items: flex-start; color: var(--text); font-weight: 600; }
-    .old-price { margin: 0 0 3px; color: var(--muted); font-weight: 600; }
-    .old-price s { color: #77858b; }
-    .price-label { margin: 0; color: var(--primary); font-weight: 700; }
     .price { display: flex; justify-content: center; align-items: baseline; gap: 8px; margin: -5px 0 17px; color: var(--primary); font-family: Montserrat, Nunito, sans-serif; font-weight: 900; }
     .price .currency { font-size: 1.45rem; }
     .price .amount { font-size: clamp(4rem, 12vw, 5.4rem); line-height: 1; letter-spacing: -.06em; }
@@ -209,17 +226,6 @@
       .sticky-cta-copy { font-size: .7rem; }
       .sticky-cta-button { padding-inline: 10px; font-size: .68rem; }
     }
-    .exit-modal[hidden] { display: none; }
-    .exit-modal { position: fixed; z-index: 1000; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(18, 56, 74, .72); }
-    .exit-dialog { position: relative; width: min(100%, 560px); max-height: min(92vh, 720px); overflow: auto; padding: clamp(28px, 5vw, 46px); border: 1px solid var(--border); border-radius: 26px; background: var(--paper); box-shadow: 0 24px 80px rgba(18, 56, 74, .28); text-align: center; }
-    .exit-dialog h2 { margin: 0 38px 12px 0; font-size: clamp(1.55rem, 4vw, 2.25rem); }
-    .exit-dialog .lead { margin: 0 auto 22px; color: var(--muted); }
-    .exit-dialog .offer-list { margin-bottom: 24px; }
-    .exit-close { position: absolute; top: 12px; right: 16px; width: 38px; height: 38px; border: 0; border-radius: 50%; background: var(--tint); color: var(--primary); font-size: 1.5rem; line-height: 1; cursor: pointer; }
-    .exit-close:hover { background: var(--border); }
-    .exit-dialog .price { margin-bottom: 18px; }
-    .exit-dialog .price .amount { font-size: clamp(3.4rem, 12vw, 5rem); }
-    .exit-dialog .trust-row { margin-top: 18px; }
     @media (max-width: 850px) {
       .section { padding: 68px 0; }
       .pain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -454,23 +460,43 @@
 
     <section class="section offer" aria-labelledby="offer-title">
       <div class="wrap">
-        <article id="offer-card" class="offer-card">
-          <figure class="offer-product-image">
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519664018870824/rJXlnPdGhuALkUma.png" alt="Mockup principal dos mapas mentais de enfermagem incluídos na oferta" width="1920" height="1920" loading="lazy" decoding="async">
-            <figcaption>Veja por dentro o material que você recebe.</figcaption>
-          </figure>
-          <h2 id="offer-title">Comece sua próxima revisão hoje</h2>
-          <p class="lead">Material completo + bônus por apenas:</p>
-          <figure class="offer-product-image offer-complete-image">
-            <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519664018870824/hBTKXcEGRDBLLfhx.png" alt="Mockup completo dos mapas mentais e bônus incluídos na oferta" width="1920" height="1920" loading="lazy" decoding="async">
-            <figcaption>Mapas, bônus e versão para impressão incluídos.</figcaption>
-          </figure>
-          <ul class="offer-list"><li><span class="check" aria-hidden="true">✓</span>Mapas mentais de enfermagem em 6 módulos</li><li><span class="check" aria-hidden="true">✓</span>Bônus: cronograma de revisão de 60 dias</li><li><span class="check" aria-hidden="true">✓</span>Bônus: mural de mnemônicos em PDF</li><li><span class="check" aria-hidden="true">✓</span>Formato Digital Pronto para Imprimir e Usar</li></ul>
-          <p class="old-price">Valor normal: <s>R$ 97,00</s> — Hoje por apenas:</p>
-          <div class="price" aria-label="10 reais"><span class="currency">R$</span><span class="amount">10</span></div>
-          <a class="cta offer-cta" href="https://pay.lowify.com.br/checkout.php?product_id=ToDKsR">QUERO GARANTIR MEU MATERIAL AGORA</a>
-          <div class="trust-row"><span><i class="check" aria-hidden="true">✓</i>Compra 100% Segura</span><span><i class="check" aria-hidden="true">✓</i>Acesso Imediato</span></div>
-        </article>
+        <header class="section-head">
+          <h2 id="offer-title">Escolha a oferta ideal para sua revisão</h2>
+          <p>Compare as opções e escolha entre os mapas essenciais ou o pacote completo com os bônus desbloqueados.</p>
+        </header>
+        <div id="offer-card" class="offer-options">
+          <article class="offer-card offer-option" id="offer-essential">
+            <figure class="offer-product-image offer-card-mockup">
+              <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519664018870824/rJXlnPdGhuALkUma.png" alt="Mockup dos mapas mentais de enfermagem da oferta essencial" width="1920" height="1920" loading="lazy" decoding="async">
+            </figure>
+            <span class="offer-kicker">Oferta essencial</span>
+            <h2>Mapas mentais</h2>
+            <p class="offer-subtitle">Para começar a revisar os principais conteúdos de enfermagem de forma visual.</p>
+            <div class="price" aria-label="10 reais"><span class="currency">R$</span><span class="amount">10</span><span class="cents">00</span></div>
+            <ul class="offer-list">
+              <li><span class="check" aria-hidden="true">✓</span>+257 mapas mentais de enfermagem</li>
+              <li class="locked"><span class="check" aria-hidden="true">🔒</span><span class="lock-label">Cronograma de revisão de 60 dias</span></li>
+              <li class="locked"><span class="check" aria-hidden="true">🔒</span><span class="lock-label">Mural de mnemônicos em PDF</span></li>
+            </ul>
+            <a class="cta offer-cta" href="https://pay.lowify.com.br/checkout.php?product_id=ToDKsR">QUERO SÓ OS MAPAS</a>
+            <small class="offer-note">Pagamento único • <strong>Opção essencial</strong></small>
+          </article>
+
+          <article class="offer-card offer-option is-featured" id="offer-complete">
+            <span class="offer-kicker">Oferta completa</span>
+            <h2>Mapas + bônus</h2>
+            <p class="offer-subtitle">A opção mais completa para organizar sua rotina e acelerar a revisão.</p>
+            <div class="price" aria-label="27 reais e 90 centavos"><span class="currency">R$</span><span class="amount">27</span><span class="cents">90</span></div>
+            <ul class="offer-list">
+              <li><span class="check" aria-hidden="true">✓</span>+257 mapas mentais de enfermagem</li>
+              <li><span class="check" aria-hidden="true">✓</span>Cronograma de revisão de 60 dias</li>
+              <li><span class="check" aria-hidden="true">✓</span>Mural de mnemônicos em PDF</li>
+              <li><span class="check" aria-hidden="true">✓</span>Arquivos digitais prontos para imprimir</li>
+            </ul>
+            <a class="cta offer-cta" href="https://pay.lowify.com.br/go.php?offer=af5e6e12">QUERO MAPAS + BÔNUS</a>
+            <small class="offer-note">Pagamento único • <strong>Pacote mais completo</strong></small>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -505,76 +531,7 @@
       </div>
     </section>
   </main>
-  <div class="exit-modal" data-exit-modal hidden>
-    <div class="exit-dialog" role="dialog" aria-modal="true" aria-labelledby="exit-modal-title">
-      <button class="exit-close" type="button" data-exit-close aria-label="Fechar oferta">×</button>
-      <h2 id="exit-modal-title">Antes de sair, facilite sua rotina de enfermagem a partir de hoje.</h2>
-      <p class="lead">Você ainda pode garantir os mapas mentais e os bônus por apenas R$ 10.</p>
-      <ul class="offer-list"><li><span class="check" aria-hidden="true">✓</span>Mapas mentais de enfermagem</li><li><span class="check" aria-hidden="true">✓</span>6 módulos organizados e prontos para estudar</li><li><span class="check" aria-hidden="true">✓</span>Bônus: cronograma de aprovação e mural de mnemônicos</li></ul>
-      <p class="old-price">De <s>R$ 97,00</s> por apenas:</p>
-      <div class="price" aria-label="10 reais"><span class="currency">R$</span><span class="amount">10</span></div>
-      <a class="cta offer-cta" href="https://pay.lowify.com.br/checkout.php?product_id=ToDKsR">QUERO GARANTIR MEU ACESSO</a>
-      <div class="trust-row"><span><i class="check" aria-hidden="true">✓</i>Acesso imediato</span><span><i class="check" aria-hidden="true">✓</i>Garantia de 7 dias</span></div>
-    </div>
-  </div>
   <script>
-    (() => {
-      const modal = document.querySelector('[data-exit-modal]');
-      const close = modal?.querySelector('[data-exit-close]');
-      const offerCard = document.querySelector('#offer-card');
-      if (!modal || !close) return;
-      let shown = false;
-      let suppressExitPrompt = false;
-      const show = () => {
-        if (shown || suppressExitPrompt) return;
-        shown = true;
-        modal.hidden = false;
-        document.body.style.overflow = 'hidden';
-      };
-      const hide = () => {
-        modal.hidden = true;
-        document.body.style.overflow = '';
-      };
-      const suppress = () => {
-        suppressExitPrompt = true;
-        window.setTimeout(() => { suppressExitPrompt = false; }, 1400);
-      };
-      close.addEventListener('click', hide);
-      modal.addEventListener('click', event => { if (event.target === modal) hide(); });
-      document.addEventListener('keydown', event => { if (event.key === 'Escape' && !modal.hidden) hide(); });
-
-      // Never open the exit popup as a side effect of clicking a CTA or control.
-      document.addEventListener('pointerdown', event => {
-        if (event.target.closest('a, button')) suppress();
-      }, true);
-      document.addEventListener('click', event => {
-        const target = event.target.closest('a[href="#offer-card"]');
-        if (!target || !offerCard) return;
-        event.preventDefault();
-        suppress();
-        offerCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        offerCard.classList.remove('is-targeted');
-        void offerCard.offsetWidth;
-        offerCard.classList.add('is-targeted');
-        window.setTimeout(() => offerCard.classList.remove('is-targeted'), 1250);
-      }, true);
-      document.addEventListener('mouseout', event => {
-        if (!suppressExitPrompt && event.clientY <= 0 && event.relatedTarget === null) show();
-      });
-      try {
-        history.pushState({ exitGuard: true }, '', window.location.href);
-        window.addEventListener('popstate', () => {
-          if (suppressExitPrompt) return;
-          if (!shown) {
-            show();
-            history.pushState({ exitGuard: true }, '', window.location.href);
-          }
-        });
-      } catch (error) {
-        // Alguns ambientes bloqueiam o histórico; o exit intent continua funcionando.
-      }
-    })();
-
     (() => {
       const bar = document.querySelector('[data-sticky-cta]');
       if (!bar) return;
