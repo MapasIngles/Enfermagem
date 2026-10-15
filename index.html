@@ -20,9 +20,9 @@
       --accent: #d94f83;
       --accent-hover: #b83b68;
       --gold: #e8b84a;
-      --bg: #f7f5ef;
-      --paper: #fffdf8;
-      --tint: #eef7f3;
+      --bg: #fff4f7;
+      --paper: #fffdfd;
+      --tint: #fff0f4;
       --pink-soft: #fce7ef;
       --yellow-soft: #fff4ce;
       --lilac-soft: #eee8f8;
@@ -50,7 +50,7 @@
     .section-head p { margin: 15px auto 0; max-width: 780px; color: var(--muted); font-size: clamp(1rem, 1.6vw, 1.12rem); }
     .hero { padding: 48px 0 86px; text-align: center; background: var(--paper); }
     .hero h1 { max-width: 780px; margin: 0 auto 20px; color: var(--primary); font-size: clamp(2.05rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.08; letter-spacing: -.045em; }
-    .hero h1 .highlight { display: inline; color: var(--highlight); }
+    .hero h1 .highlight { display: inline; color: var(--accent); }
     .hero-copy { max-width: 625px; margin: 0 auto 36px; color: var(--muted); font-size: 1.08rem; line-height: 1.65; }
     .hero-copy strong { color: var(--primary); }
     .product-image { width: min(100%, 595px); margin: 0 auto 30px; }
@@ -222,26 +222,12 @@
     @keyframes reveal { from { opacity: 0; transform: translateY(-7px); } to { opacity: 1; transform: translateY(0); } }
     .faq-footer { text-align: center; }
     .faq-footer p { margin-bottom: 20px; color: var(--primary); font-weight: 600; }
-    .urgency-bar { position: fixed; z-index: 950; top: 0; right: 0; left: 0; min-height: 28px; padding: 4px 22px; background: var(--primary); color: #fff; text-align: center; font-size: .64rem; font-weight: 800; letter-spacing: .04em; line-height: 1.15; text-transform: uppercase; }
-    .urgency-bar strong { color: #f3c96a; }
-    .sticky-cta-bar { position: fixed; z-index: 950; right: 0; bottom: 0; left: 0; display: flex; justify-content: center; padding: 12px 20px; background: rgba(255, 255, 255, .96); border-top: 1px solid var(--border); box-shadow: 0 -12px 30px rgba(18, 56, 74, .12); opacity: 0; transform: translateY(115%); pointer-events: none; transition: opacity .45s ease, transform .55s cubic-bezier(.22, 1, .36, 1); backdrop-filter: blur(10px); }
-    .sticky-cta-bar.is-visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
-    .sticky-cta-inner { display: flex; width: min(100%, 980px); align-items: center; justify-content: space-between; gap: 18px; }
-    .sticky-cta-copy { color: var(--primary); font-size: .93rem; font-weight: 700; line-height: 1.25; }
-    .sticky-cta-copy strong { color: var(--accent); }
-    .sticky-cta-button { min-height: 48px; padding: 12px 24px; white-space: nowrap; font-size: .86rem; }
-    @media (min-width: 601px) { body { padding-top: 28px; padding-bottom: 78px; } }
+    .urgency-bar { position: fixed; z-index: 950; top: 0; right: 0; left: 0; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 4px 10px; min-height: 48px; padding: 10px 22px; background: var(--accent); color: #fff; text-align: center; font-size: clamp(.82rem, 1.2vw, .96rem); font-weight: 800; letter-spacing: .01em; line-height: 1.25; text-wrap: balance; box-shadow: 0 3px 14px rgba(18, 56, 74, .12); }
+    .urgency-bar strong { color: #fff; font-weight: 900; }
+    @media (min-width: 601px) { body { padding-top: 56px; } }
     @media (max-width: 600px) {
-      body { padding-top: 32px; padding-bottom: 92px; }
-      .urgency-bar { min-height: 32px; padding: 5px 12px; font-size: .55rem; letter-spacing: .02em; }
-      .sticky-cta-bar { padding: 10px 14px; }
-      .sticky-cta-inner { gap: 10px; }
-      .sticky-cta-copy { max-width: 52%; font-size: .75rem; }
-      .sticky-cta-button { min-height: 52px; padding: 10px 14px; font-size: .72rem; }
-    }
-    @media (max-width: 350px) {
-      .sticky-cta-copy { font-size: .7rem; }
-      .sticky-cta-button { padding-inline: 10px; font-size: .68rem; }
+      body { padding-top: 64px; }
+      .urgency-bar { min-height: 0; padding: 10px 16px; gap: 3px 8px; font-size: .78rem; line-height: 1.3; }
     }
     @media (max-width: 850px) {
       .section { padding: 68px 0; }
@@ -274,6 +260,7 @@
       .offer-cta { max-width: none; }
     }
     @media (max-width: 350px) {
+      .urgency-bar { padding-inline: 12px; font-size: .74rem; }
       .wrap { width: calc(100% - 24px); }
       .hero { padding-top: 48px; }
       .hero h1 { font-size: 1.92rem; }
@@ -321,13 +308,7 @@
   <!-- End LowTrack Pixel -->
 </head>
 <body>
-  <div class="urgency-bar" role="status">Condição especial de hoje: <strong>mapas + bônus por R$ 10</strong></div>
-  <div class="sticky-cta-bar" data-sticky-cta aria-hidden="true">
-    <div class="sticky-cta-inner">
-      <div class="sticky-cta-copy"><strong>Mapas mentais</strong> + bônus por apenas <strong>R$ 10</strong></div>
-      <a class="cta sticky-cta-button" href="https://pay.lowify.com.br/checkout.php?product_id=ToDKsR">COMPRAR COM DESCONTO</a>
-    </div>
-  </div>
+  <div class="urgency-bar" role="status"><span>Mais clareza na revisão</span><strong>+257 mapas mentais de Enfermagem</strong></div>
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="wrap">
@@ -431,14 +412,14 @@
 
     <section class="section bonuses" aria-labelledby="bonuses-title">
       <div class="wrap">
-        <header class="section-head"><h2 id="bonuses-title">E você ainda recebe 2 bônus</h2><p>Para transformar o material em uma rotina de estudos simples de seguir.</p></header>
+        <header class="section-head"><h2 id="bonuses-title">E você ainda recebe 2 bônus</h2><p>Dois recursos complementares: um para organizar sua revisão e outro para facilitar a memorização.</p></header>
         <figure class="strategic-mockup complete-offer-mockup">
           <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519664018870824/hBTKXcEGRDBLLfhx.png" alt="Mockup completo com mapas mentais, cronograma de 60 dias, mural de mnemônicos e material pronto para imprimir" width="1920" height="1920" loading="lazy" decoding="async">
           <figcaption>Todo o material principal e os bônus reunidos em uma única visão.</figcaption>
         </figure>
         <div class="bonus-grid">
-          <article class="card bonus-card"><span class="bonus-label">Presente Especial</span><h3>Cronograma de Aprovação 60 Dias</h3><p>Um roteiro simples para organizar sua revisão ao longo de 60 dias.</p></article>
-          <article class="card bonus-card"><span class="bonus-label">Incluso Hoje</span><h3>Mural de Mnemônicos</h3><p>Um PDF com siglas e associações para apoiar a memorização.</p></article>
+          <article class="card bonus-card"><span class="bonus-label">Bônus 1 • Organização</span><h3>Cronograma de revisão de 60 dias</h3><p>Distribua seus estudos com um roteiro claro e mantenha uma rotina de revisão pelos próximos 60 dias.</p></article>
+          <article class="card bonus-card"><span class="bonus-label">Bônus 2 • Memorização</span><h3>Mural de mnemônicos em PDF</h3><p>Use siglas e associações visuais para ajudar a lembrar conceitos importantes e tornar a revisão mais ágil.</p></article>
         </div>
         <div class="advanced-product-grid" aria-label="Mockups dos produtos incluídos na oferta">
           <figure>
@@ -553,15 +534,6 @@
     </section>
   </main>
   <script>
-    (() => {
-      const bar = document.querySelector('[data-sticky-cta]');
-      if (!bar) return;
-      window.setTimeout(() => {
-        bar.classList.add('is-visible');
-        bar.setAttribute('aria-hidden', 'false');
-      }, 3000);
-    })();
-
     (() => {
       const viewports = [...document.querySelectorAll('.mind-viewport')];
       const tracks = [...document.querySelectorAll('[data-mind-track]')];
